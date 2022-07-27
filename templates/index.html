@@ -1,10 +1,20 @@
-<html>
-    <head>
-        <title> Contatos </title>
-    </head>
-    <body>
-    <h1>Victor Gabriel </h1>
-    <h2> gmail@gmail.com </h2>
-    <h3> 92911111111 </h3>
-    </body>
-    </html>
+{% extends "base.html" %}
+
+{% block content %}
+{% for post in posts %}
+    <article class="post">
+        <header>
+            <div>
+            <h1> {{ post.title }}</h1>
+            </div> 
+                <div class="about">
+                    by {{ post.author }} on {{post.created.strftime('%d/%m/%Y')}} 
+                </div>
+        <header>
+        <p class="body"> {{post.body}} </p>   
+    <article>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}    
+{% endfor %}
+{% endblock %}
